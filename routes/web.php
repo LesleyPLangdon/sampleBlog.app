@@ -16,16 +16,41 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/', function () {
-    YamlFrontMatter::parseFile(
-    // $document = ::parseFile(
-        resource_path('posts/my-first-post.html')
-    );
-
-//dd($document->matter('title'));
     return view('posts', [
         'posts' => Post::all()
+
     ]);
 });
+  //  $posts = [];
+//
+//    $posts = array_map(function ($file) {
+//        $document = YamlFrontMatter::parseFile($file);
+//        return new Post(
+//            $document->title,
+//            $document->excerpt,
+//            $document->date,
+//            $document->body(),
+//            $document->slug
+//        );
+//    }, $files);
+//    foreach ($files as $file) {
+//        $document = YamlFrontMatter::parseFile($file);
+//
+//        $posts[] = new Post(
+//            $document->title,
+//            $document->excerpt,
+//            $document->date,
+//            $document->body(),
+//            $document->slug
+//        );
+ //   }
+
+
+//    return view('posts', [
+//        'posts' => $posts
+//
+//    ]);
+//});
 
 Route::get('posts/{post}', function($slug) {
 
