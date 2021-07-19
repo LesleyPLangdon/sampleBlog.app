@@ -1,6 +1,4 @@
-{{--pairs with views\layout--}}
-
-@extends ('layout')
+<x-layout>
 
 @section('content')
     <article>
@@ -16,4 +14,4 @@
     <a href="/">Go Back</a>
 
 @endsection
-
+</x-layout>
