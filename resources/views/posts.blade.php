@@ -1,19 +1,21 @@
-<!doctype html>
+{{--pairs with views\components\layout--}}
 
-<title>My Blog</title>
-<link rel="stylesheet" href="/app.css">
-<body>
-<?php foreach ($posts as $post) : ?>
-<article>
+<x-layout>
+    @foreach ($posts as $post)
+        <article>
 
-    <h1>
-        <a href="/posts/<?= $post->slug; ?>">
-        <?= $post->title ?></h1></a>
+            <h1>
+                <a href="/posts/<?= $post->slug; ?>">
 
-        <div>
-            <?= $post->excerpt ?>
-        </div>
+                    {{ $post->title }}
+                </a>
+            </h1>
 
-</article>
-<?php endforeach; ?>
-</body>
+            <div>
+                {{ $post->excerpt }}
+
+            </div>
+
+        </article>
+    @endforeach
+    </x-layout>

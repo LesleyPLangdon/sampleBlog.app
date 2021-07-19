@@ -35,14 +35,12 @@ class post
 
     public static function all()
     {
-        return cache()->rememberForever('posts.all', function() {
+        return cache()->rememberForever('posts.all', function () {
             return collect(File::files(resource_path("posts")))
-
                 ->map(function ($file) {
                     return YamlFrontMatter::parseFile($file);
                 })
-
-                ->map(function ($document){
+                ->map(function ($document) {
 
                     return new Post(
                         $document->title,
@@ -61,23 +59,29 @@ class post
 
     public static function find($slug)
     {
-        // of all the blog posts, find the one with a slug that matches the one that was requested
 
         return static::all()->firstWhere('slug', $slug);
-
-//        //$path = __DIR__ . "/../resources/posts/{$slug}.html";
-//        if (!file_exists($path = resource_path("posts/{$slug}.html"))) {
-//        //     if (!file_exists($path = __DIR__ . "/../resources/posts/{$slug}.html")) {
-//           throw new ModelNotFoundException();
-//       }
+//        $post = static::all()->firstWhere('slug', $slug);
 //
-//        return cache()->remember("posts.{$slug}", 1800, function() use ($path) {
-//            return file_get_contents($path);
-//        });
-
-
+//        if (!$post) {
+//            throw new ModelNotFoundException();
+//
+//        }
+//        return $post;
     }
 
+    public static function findOrFail($slug)
+    {
+
+
+        $post = static::find($slug);
+
+        if (!$post) {
+            throw new ModelNotFoundException();
+
+        }
+        return $post;
+    }
 
 }
 
