@@ -10,7 +10,7 @@
             <header>
                 <div class="space-x-2">
                     <div class="space-x-2">
-                        <x-category-button :category="$post->category" />
+                        <x-category-button :category="$post->category"/>
                     </div>
 
                 </div>
@@ -29,9 +29,9 @@
             </header>
 
             <div class="text-sm mt-4">
-                <p>
-                    {{ $post->excerpt }}
-                </p>
+
+                {!! $post->excerpt !!}
+
             </div>
 
             <footer class="flex justify-between items-center mt-8">
