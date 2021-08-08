@@ -16,10 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
      {
+
+//         User::truncate();
+//         Post::truncate();
+//         Category::truncate();
+//
+//         Post::factory(10)->create();
+
+
        $user = User::factory()->create();
 
-        Post::factory(10)->create([
+        Post::factory(10)->create(
+            [
             'user_id' => $user->id
-        ]);
+        ]
+        );
     }
 }
