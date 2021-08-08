@@ -22,9 +22,11 @@ class Post extends Model
 //            ->orWhere('body', 'like', '%' . request('search') . '%');
 //    }
         $query->when($filters['search'] ?? false, function ($query, $search) {
-              $query
-                ->where('title', 'like', '%' . $search . '%')
-                ->orWhere('body', 'like', '%' . $search . '%');
+              $query->where(function ($query) use ($search) {
+
+                  $query->where('title', 'like', '%' . $search . '%')
+                      ->orWhere('body', 'like', '%' . $search . '%');
+              });
         });
 
         $query->when(isset($filters['category']) ? $filters['category'] : false, function ($query, $category) {
