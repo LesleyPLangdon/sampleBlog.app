@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    //protected $guarded = ['id']; //allows all mass assignment except id
+    protected $guarded = ['id']; //allows all mass assignment except id
 //    protected $fillable = [
 //        'name',
 //        'email',
